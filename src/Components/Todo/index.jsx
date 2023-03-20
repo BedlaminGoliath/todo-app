@@ -1,8 +1,8 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../App';
 import useForm from '../../hooks/form';
 import './todo.scss';
 
-import { v4 as uuid } from 'uuid';
 
 const Todo = (props) => {
 
