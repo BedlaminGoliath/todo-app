@@ -6,7 +6,8 @@ const List=(props) => {
     const defUser = useContext(Context);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsOnPage = 3;
+    const [itemsOnPage, setItemsPerPage] = useState(3);
+    // const itemsOnPage = 2;
 
     const start = (currentPage-1) * itemsOnPage;
     const endIndex = start + itemsOnPage;

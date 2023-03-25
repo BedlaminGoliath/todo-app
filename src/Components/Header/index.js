@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Header } from "@mantine/core";
 import { Context } from "../../App";
+import './Header.scss';
 
 const HeaderComponent = () => {
     const defUser = useContext(Context);
