@@ -4,6 +4,8 @@ import Todo from './Components/Todo';
 import List from "./Components/List";
 import useForm from './hooks/form';
 import Header from "./Components/Header";
+import "./App.scss";
+// import { SettingsContext } from './Components/context/Settings';
 
  export const Context = createContext("");
 
@@ -11,7 +13,6 @@ const App = () => {
 
   const [defaultValues] = useState({
     difficulty: 4,
-    itemsPerPage: 3,
     });
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
@@ -53,9 +54,11 @@ const App = () => {
     return (
       <>
         <Context.Provider value={{ list, setList, incomplete, setIncomplete, defaultValues }}>
-        <Header />
-        <Todo handleChange={handleChange} handleSubmit={handleSubmit}/>
-        <List toggleComplete={toggleComplete}/>
+          <Header />
+          {/* <SettingsContext> */}
+            <Todo handleChange={handleChange} handleSubmit={handleSubmit}/>
+            <List toggleComplete={toggleComplete}/>
+          {/* </SettingsContext> */}
         </Context.Provider >
       </>
     );

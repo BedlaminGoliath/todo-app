@@ -1,0 +1,71 @@
+:root {
+    --form-bg-color: white;
+
+}
+
+.TodoComp, .List {
+    padding: 10px;
+   }
+   
+   .listItem {
+
+     border: solid;
+     margin: 5px;
+     padding: 10px;
+   
+   }
+   
+   
+   form {
+       padding: 10px;
+     background-color: var(--form-element-bg-color);
+     border: solid;
+     --columns: 1;
+   
+     display: grid;
+     grid-template-columns: repeat(var(--columns) 1fr);
+   }
+   
+   form > h2 {
+     grid-column: span var(--columns);
+     margin-bottom: 20px;
+   }
+   
+   form > label {
+     display: block;
+
+   }
+   
+   
+   .Todo, .List {
+     margin:0 4em;
+   
+   }
+   
+   .deleteButton {
+     float: right;
+   }
+   
+   .pagination {
+     margin:0 4em;
+   }
+   
+   @media (min-width: 376px) {
+     form {
+       --columns: 2;
+     }
+   
+     form > label {
+       --form-element-bg-color: rgb(228, 169, 228);
+     }
+   }
+   
+   @media (min-width: 767px) {
+     form {
+       --columns: 4;
+     }
+   
+     form > label {
+       --form-element-bg-color: turquoise;
+     }
+   }

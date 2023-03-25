@@ -10,7 +10,7 @@ const Todo = (props) => {
 
   return (
     
-  <div className='Todo'>
+  <div className='TodoComp'>
 
     
       {/* <header data-testid="todo-header">
