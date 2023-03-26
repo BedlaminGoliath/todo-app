@@ -1,6 +1,6 @@
-// import React from "react";
-// import { useForm } from "@mantine/form"
-// import { NumberInput, TextInput, Button, Box } from "@mantine/core";
+import React from "react";
+import { { SettingsContext } from "../../Context/S"
+import { Modak } from "@mantine/core"
 
 // function FormComponent(){
 //     const form = useForm({
