@@ -1,15 +1,17 @@
 :root {
     --form-bg-color: white;
-
+    display:  flex;
+    flex-direction: column;
 }
 
 .TodoComp, .List {
-    padding: 10px;
+    padding: 15px;
+    background-color: cadetblue;
    }
    
    .listItem {
 
-     border: solid;
+     border: 2px;
      margin: 5px;
      padding: 10px;
    
@@ -52,7 +54,7 @@
    
    @media (min-width: 376px) {
      form {
-       --columns: 2;
+       --columns: 3;
      }
    
      form > label {
