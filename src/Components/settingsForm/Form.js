@@ -1,13 +1,32 @@
-import React from "react";
-import { { SettingsContext } from "../../Context/S"
-import { Modak } from "@mantine/core"
+import React,{ useContext }from "react";
+import { SettingsContext } from "../context/Settings";
+import { TextInput, Switch, NumberInput, Button, Card } from '@mantine/core';
 
-// function FormComponent(){
-//     const form = useForm({
-//         initialValues: { items-per-page:'2', KeyWord: ''}\
+function Form(){
 
-//         validate: {
-//             items-per-page: (value)=> 
-//         }
-//     })
-// }
+    const context  = useContext(SettingsContext);
+
+    // console.log(context);
+    return(
+
+            <Card>
+                <h2>User Settings:</h2>
+                <NumberInput 
+                    onChange={(num)=>context.setItemsPerPage(num) }
+                    placeholder={context.itemsOnPage} 
+                    label="number of items per page"
+                />
+                <Switch
+                    checked={context.seeCompletedItems}
+                    onChange={(e)=>context.setSeeCompletedItems(e.currentTarget.checked)}
+                    label="show completed items"
+                />
+
+            </Card>
+
+    )
+
+
+}
+
+export default Form;

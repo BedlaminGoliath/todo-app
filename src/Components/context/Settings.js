@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-export const Context = React.createContext();
 
 export const SettingsContext = React.createContext();
 
 
-function SettingProvider(props){
+const SettingsProvider=(props)=>{
 
     const [ itemsOnPage, setItemsPerPage] = useState(3);
 
@@ -20,6 +19,7 @@ function SettingProvider(props){
         seeCompletedItems,
         setSeeCompletedItems
     }
+    
 
     return(
         <SettingsContext.Provider value={exportedSettings}>
@@ -28,4 +28,5 @@ function SettingProvider(props){
     )
 }
 
-export default SettingProvider;
+
+export default SettingsProvider;

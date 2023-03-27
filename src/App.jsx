@@ -4,8 +4,9 @@ import Todo from './Components/Todo';
 import List from "./Components/List";
 import useForm from './hooks/form';
 import Header from "./Components/Header";
+import Form from "./Components/settingsForm/Form";
 import "./App.scss";
-// import { SettingsContext } from './Components/context/Settings';
+import { SettingsContext } from './Components/context/Settings';
 
  export const Context = createContext("");
 
@@ -53,9 +54,10 @@ const App = () => {
 
     return (
       <>
-        <Context.Provider value={{ list, setList, incomplete, setIncomplete, defaultValues }}>
+        <Context.Provider value={{ list, setList, incomplete, setIncomplete, defaultValues  }}>
           <Header />
-          {/* <SettingsContext> */}
+          {/* <SettingsContext  > */}
+            <Form/>
             <Todo handleChange={handleChange} handleSubmit={handleSubmit}/>
             <List toggleComplete={toggleComplete}/>
           {/* </SettingsContext> */}

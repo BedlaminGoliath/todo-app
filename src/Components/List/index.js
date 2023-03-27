@@ -1,17 +1,23 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../App";
+import { SettingsContext } from "../context/Settings";
 import { Pagination, CloseButton}from "@mantine/core";
 
 const List=(props) => {
+
+    const { itemsOnPage, seeCompletedItems } = useContext(SettingsContext);
     const defUser = useContext(Context);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsOnPage, setItemsPerPage] = useState(3);
+
+    let listToDisplay = seeCompletedItems ? defUser.list : defUser.list.filter((item)=> !item.complete)
+
+    // const [itemsOnPage, setItemsPerPage] = useState(3);
     // const itemsOnPage = 2;
 
-    const start = (currentPage-1) * itemsOnPage;
-    const endIndex = start + itemsOnPage;
-    const displayed = defUser.list.slice(start,endIndex);
+    // const start = (currentPage-1) * itemsOnPage;
+    // const endIndex = start + itemsOnPage;
+    // const displayed = defUser.list.slice(start,endIndex);
 
     const pageChange = (newPage) => {
         setCurrentPage(newPage);
@@ -20,7 +26,7 @@ const List=(props) => {
     return (
         <>
             <div className="list">
-                {displayed.map((item)=> {
+                {listToDisplay.map((item)=> {
                     return(
                         <div className="listItem" key={itemsOnPage.id}>
                         <CloseButton 
