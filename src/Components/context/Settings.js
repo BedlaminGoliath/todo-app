@@ -5,17 +5,20 @@ export const Context = React.createContext();
 export const SettingsContext = React.createContext();
 
 
-function SettingContext(props){
-    // const [ itemsOnPage, setItemsPerPage] = useState(2);
+function SettingProvider(props){
 
-    const changeItems = (number) => {
-        
-        setItemsPerPage(number);
-    };
+    const [ itemsOnPage, setItemsPerPage] = useState(3);
+
+    const[ seeCompletedItems, setSeeCompletedItems] = useState(true); 
+
+
+    
     
     let exportedSettings = {
         itemsOnPage,
-        setItemsPerPage
+        setItemsPerPage,
+        seeCompletedItems,
+        setSeeCompletedItems
     }
 
     return(
@@ -25,4 +28,4 @@ function SettingContext(props){
     )
 }
 
-export default SettingContext;
+export default SettingProvider;
