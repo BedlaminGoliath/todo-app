@@ -1,18 +1,34 @@
 import React, { useContext } from "react";
-import { Header } from "@mantine/core";
-import { Context } from "../../App";
-import './Header.scss';
+import { Group } from "@mantine/core";
+import { Select, Switch } from "@mantine/core";
+import { SettingsContext } from "../Context/Settings/Index";
 
-const HeaderComponent = () => {
-    const defUser = useContext(Context);
+const Header = () => {
 
-    return(
-    <Header className="header">
-        <h1>
-            To Do List: <span>{defUser.incomplete} pending items</span>
-        </h1>
-    </Header>
-    );
+  const settings = useContext(SettingsContext);
+
+  return (
+    <Group position="center">
+      <label>Display Items:
+      <Select
+        placeholder="Pick one"
+        data={[
+          { value: 3, label: "3" },
+          { value: 6, label: "6" },
+          { value: 9, label: "9" },
+          { value: 12, label: "12" },
+        ]}
+        onChange={settings.setItemsPrPage}
+      />
+      </label>
+      <label>Completed:
+      <Switch
+        checked={settings.showCompleted} 
+        onChange={(e) => settings.changeShowCompleted(e.currentTarget.checked)}
+        />
+      </label>
+    </Group>
+  );
 };
 
-export default HeaderComponent;
+export default Header;

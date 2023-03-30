@@ -1,81 +1,74 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 
 export const SettingsContext = React.createContext();
 
 function SettingsProvider(props){
 
-    const [defaultValues] = useState({ difficulty:3});
+        const [defaultValues] = useState({ difficulty:4});
 
-    const [itemsPrPage, setItemsPrPage] = useState(3);
+        const [itemsPrPage, setItemsPrPage] = useState(3);
+        const [showCompleted,setShowCompleted] = useState(false);
+        const [list, setList] = useState([]);
+        const [incomplete, setInComplete] =  useState([]);
 
-    const [showCompleted,setShowCompleted] = useState(false);
+    function deleteItem(id){
+        const items = list.map((item)=>{
+            if(item.id===id){
+                item.complete =!item.complete
+            } return item;
+        });
+        setList(items)
+    }
 
-    const [list, setList] = useState(JSON.parse(localStorage.getItem("list")));
-      const [incomplete, setInComplete] =  useState([]);
+    function toggleComplete(id) {
+        const items = list.map((item) => {
+          if (item.id === id) {
+            item.complete = !item.complete;
+          }
+          return item;
+        });
+        setList(items);
+      }
 
-    const changeItemsPrPage=(number)=>{
-        number = Number(number);
-        localStorage.setItem("itemsPrPage", number);
-        setItemsPrPage(number);
-    };
+    //proxy function
+    const addItemToList = (item) => setList([...list, item]);
 
-    const changeShowCompleted=(choice)=>{
-        localStorage.setItem("showCompleted", JSON.stringify(choice));
+    const changeShowCompleted=(choice)=> {
+        localStorage.setItem("show completed", choice);
         setShowCompleted(choice);
     };
 
-    useEffect(()=>{
-        let savedItemsSetting = localStorage.getItem("itemsPrPage");
-        let savedShowSetting = JSON.parse(localStorage.getItem("showCompleted"));
-        let savedList = JSON.parse(localStorage.getItem("list"));
-
-        setList(savedList);
-        changeItemsPrPage(savedItemsSetting);
-        changeShowCompleted(savedShowSetting);
-    },[]);
-
-    const addToList = (item)=> setList([...list,item]);
-
-    useEffect(()=> { localStorage.setItem("list", JSON.stringify(list));}, [list]);
-
-    const toggleComplete=(id)=> {
-        let items = list.map((item)=>{
-            if(item.id===id){
-                item.complete = !item.complete;
-            } return item;
-        });
-        if(!showCompleted){
-            setList(items.filter((item)=> !item.complete));
-        } else {
-            setList(items);
-        }
+    const ChangeAmountOfItems=(num)=>{
+        num = Number(num);
+        localStorage.setItem("Items displayed", num);
+        setItemsPrPage(num);
     }
 
-    useEffect(()=>{
-        let sortedList = list?.sort((a,b)=> a.difficulty - b.difficulty)||[];
-        let incompleteCount = sortedList.filter((item)=> !item.complete).length;
+    useEffect(()=> {
+        let incompleteCount = list.filter((item)=> !item.complete).length;
         setInComplete(incompleteCount);
-        document.title = `To do List: ${incomplete}`;
+        document.title=`To Do List: ${incomplete}`;
+
     },[list]);
 
-    let exportedSettings = {
-        list,
-        addToList,
+    let exportSettings={
+
         defaultValues,
-        toggleComplete,
-        itemsPrPage,
-        showCompleted,
-        changeItemsPrPage,
-        changeShowCompleted,
+        list,
         incomplete,
-    };
+        addItemToList,
+        toggleComplete,
+        showCompleted,
+        changeShowCompleted,
+        ChangeAmountOfItems,
+        itemsPrPage,
+    }
 
-    return(
-        <SettingsProvider.Provider value={exportedSettings}>
+    return (
+        <SettingsContext.Provider value={exportSettings}>
             {props.children}
-        </SettingsProvider.Provider>
+        </SettingsContext.Provider>
     );
+};
 
-}
-
-export default SettingsProvider;
+export default SettingsProvider
