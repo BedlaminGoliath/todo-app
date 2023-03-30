@@ -9,6 +9,7 @@ const SettingsProvider=(props)=>{
     const [defaultValues] = useState({ difficulty:3});
 
     const [ itemsOnPage, setItemsOnPage] = useState(3);
+
     const[seeCompletedItems, setSeeCompletedItems] = useState(false); 
 
     const [list, setList] = useState(JSON.parse(localStorage.getItem("list")));
@@ -18,7 +19,7 @@ const SettingsProvider=(props)=>{
 
     const changeItemsPerPage = (newAmount)=>{
         newAmount = Number(newAmount);
-        localStorage.setItem("ItemsOnPage", newAmount);
+        localStorage.setItem("itemsOnPage", newAmount);
         setItemsOnPage(newAmount);
     };
 
@@ -37,7 +38,7 @@ const SettingsProvider=(props)=>{
         changeSeeCompletedItems(savedShow);
         },[]);
 
-
+        // console.log(list);
     const addToList = (item)=> setList([...list,item]);
     
    function toggleComplete(id){

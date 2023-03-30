@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { SettingsContext } from "../context";
+import { SettingsContext } from "../context/index";
 import { Modal } from "@mantine/core";
 
 function Form(props){

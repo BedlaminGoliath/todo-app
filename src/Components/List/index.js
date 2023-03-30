@@ -34,8 +34,10 @@ const List=(props) => {
                         <div className="listItem" key={item.id}>
                         <CloseButton 
                         className="deleteButton"
-                        onClick={()=> props.toggleComplete(item.id)}
+                        onClick={()=> defUser.toggleComplete(item.id)}
                         title="Close"
+                        size="l"
+                        iconSize={20}
                         />
                         <p>{item.text}</p>
                         <p>
@@ -54,7 +56,7 @@ const List=(props) => {
             <Pagination
             className="page"
             size="sm"
-            total={defUser.list.length/3}
+            total={defUser.list.length/ itemsOnPage +1 }
             limit={itemsOnPage}
             value={currentPage}
             onChange={pageChange}
