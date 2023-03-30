@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import { TextInput, Button, Group, Box, Slider, Grid, Center} from "@mantine/core";
 import  useForm  from "../../hooks/useForm";
 import {v4 as uuid} from "uuid";
-import { SettingsContext } from "../Context/Settings/Index";
+import { SettingsContext } from "../context/Settings/Index";
 
 
 const Todo = (props)=>{

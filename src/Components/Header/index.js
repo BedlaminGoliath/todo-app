@@ -1,25 +1,8 @@
 import React, { useContext } from "react";
-<<<<<<< HEAD
-import { Header } from "@mantine/core";
-import { SettingsContext } from "../context";
-import './Header.scss';
 
-const HeaderComponent = () => {
-
-    const defUser = useContext(SettingsContext);
-
-    return(
-    <Header className="header">
-        <h1>
-        To Do
-        </h1>
-        <h3>{defUser.incomplete}</h3>
-    </Header>
-    );
-=======
 import { Group } from "@mantine/core";
 import { Select, Switch } from "@mantine/core";
-import { SettingsContext } from "../Context/Settings/Index";
+import { SettingsContext } from "../context/Settings/Index";
 
 const Header = () => {
 
@@ -47,7 +30,7 @@ const Header = () => {
       </label>
     </Group>
   );
->>>>>>> context-methods3
+
 };
 
 export default Header;
