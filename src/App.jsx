@@ -4,9 +4,9 @@ import Todo from './Components/Todo';
 import List from './Components/List/index';
 
 import Header from "./Components/Header";
-import Form from "./Components/settingsForm";
+// import Form from "./Components/settingsForm";
 import "./App.scss";
-import  SettingsContext  from './Components/context/Settings';
+import  SettingsContext  from './Components/context/index';
 
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
 
           <SettingsContext >
           <Header />
-            <Form/>
+            {/* <Form/> */}
             <Todo/>
             <List/>
           </SettingsContext>

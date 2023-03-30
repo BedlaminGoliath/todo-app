@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { SettingsContext } from "../context/Settings";
+import { SettingsContext } from "../context/index";
 import useForm  from "../../hooks/form"
 import { Button } from "@mantine/core"
 import{ v4 as uuid } from "uuid";
 import SettingsForm from "../settingsForm";
-// import useForm from '../../hooks/form';
 
 
 
-const Todo = (props) => {
+const Todo = () => {
 
   const settings = useContext(SettingsContext);
+
+  console.log(settings);
 
   const [showModal, setShowModal]=useState(false);
 

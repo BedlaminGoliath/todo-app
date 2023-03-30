@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Header } from "@mantine/core";
-import { SettingsContext } from "../context/Settings";
+import { SettingsContext } from "../context";
 import './Header.scss';
 
 const HeaderComponent = () => {

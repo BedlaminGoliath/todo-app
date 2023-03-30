@@ -9,11 +9,10 @@ const SettingsProvider=(props)=>{
     const [defaultValues] = useState({ difficulty:3});
 
     const [ itemsOnPage, setItemsOnPage] = useState(3);
-
     const[seeCompletedItems, setSeeCompletedItems] = useState(false); 
 
     const [list, setList] = useState(JSON.parse(localStorage.getItem("list")));
-
+    console.log(list);
     const [incomplete, setIncomplete] = ([]);
 
 
