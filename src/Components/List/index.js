@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+<<<<<<< HEAD
 import { SettingsContext } from '../context/index';
 import { Pagination, CloseButton} from "@mantine/core";
 
@@ -17,17 +18,34 @@ const List=(props) => {
 
     // const [itemsOnPage, setItemsPerPage] = useState(3);
     // const itemsOnPage = 2;
+=======
+import { SettingsContext } from "../Context/Settings/Index";
+import{Card, Text, Badge, Button, Group} from "@mantine/core";
+import { Pagination}from "@mantine/core";
 
-    const start = (currentPage-1) * itemsOnPage;
-    const endIndex = start + itemsOnPage;
-    const displayed = defUser.list.slice(start,endIndex);
+const List=(props)=> {
 
-    const pageChange = (newPage) => {
-        setCurrentPage(newPage);
+    const settings = useContext(SettingsContext);
+    
+    const [page,setPage] = useState(1);
+    const todo = settings.list;
+    const itemsPerPage = settings.itemsPrPage;
+    console.log(settings);
+>>>>>>> context-methods3
+
+    const pageCount = Math.ceil(todo.length / itemsPerPage);
+    const displayed=todo.slice( (page-1)* itemsPerPage,
+    page * itemsPerPage);
+
+
+    const handlePageChange=(number)=>{
+        setPage(number);
     };
+
 
     return (
         <>
+<<<<<<< HEAD
             <div className="list">
                 {displayed.map((item)=> {
                     return(
@@ -51,15 +69,42 @@ const List=(props) => {
                 );
             })}
             </div>
+=======
+        {displayed.map(
+          (item) =>
+            item.complete === false && (
+              <Card shadow="sm" padding="lg" radius="md" key={item.id} withBorder>
+                <Card.Section>
+                  <Group position="apart" mt="md" mb="xs">
+                    <Text weight={400}>{item.text}</Text>
+                    <Badge color="pink" variant="light">
+                      Difficulty: {item.difficulty}
+                    </Badge>
+                  </Group>
+                </Card.Section>
+                <Text size="sm">Assigned to: {item.assignee}</Text>
+                <Button
+                  variant="light"
+                  color="blue"
+                  fullWidth
+                  mt="md"
+                  radius="md"
+                  onClick={() => settings.toggleComplete(item.id)}
+                >
+                  Complete: {item.complete.toString()}
+                </Button>
+              </Card>
+            )
+        )}
+>>>>>>> context-methods3
             <Pagination
-            className="page"
-            size="sm"
-            total={defUser.list.length/3}
-            limit={itemsOnPage}
-            value={currentPage}
-            onChange={pageChange}
+                current={page}
+                onChange={handlePageChange}
+                total={pageCount}
+                boundaries={3}
+                position="center"
             />
-            </>
+        </>
     );
 };
 
