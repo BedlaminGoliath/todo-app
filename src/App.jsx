@@ -13,9 +13,11 @@ const App = () => {
 
   const [defaultValues] = useState({
     difficulty: 4,
+    itemsPerPage: 3,
     });
   const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
+
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
   function addItem(item) {
@@ -31,10 +33,9 @@ const App = () => {
   // }
 
   function toggleComplete(id) {
-
     const items = list.map( (item) => {
       if ( item.id === id ) {
-        item.complete = ! item.complete;
+        item.complete = !item.complete;
       }
       return item;
     });

@@ -6,12 +6,14 @@ const List=(props) => {
     const defUser = useContext(Context);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsOnPage, setItemsPerPage] = useState(3);
+    const itemsOnPage = 3;
     // const itemsOnPage = 2;
 
     const start = (currentPage-1) * itemsOnPage;
     const endIndex = start + itemsOnPage;
     const displayed = defUser.list.slice(start,endIndex);
+
+    // console.log(defUser);
 
     const pageChange = (newPage) => {
         setCurrentPage(newPage);
@@ -22,7 +24,7 @@ const List=(props) => {
             <div className="list">
                 {displayed.map((item)=> {
                     return(
-                        <div className="listItem" key={itemsOnPage.id}>
+                        <div className="listItem" key={item.id}>
                         <CloseButton 
                         className="deleteButton"
                         onClick={()=> props.toggleComplete(item.id)}
@@ -45,7 +47,7 @@ const List=(props) => {
             <Pagination
             className="page"
             size="sm"
-            total={defUser.list.length/3}
+            total={defUser.list.length / 3}
             limit={itemsOnPage}
             value={currentPage}
             onChange={pageChange}
