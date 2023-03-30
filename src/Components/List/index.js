@@ -1,25 +1,5 @@
 import React, { useContext, useState } from "react";
-<<<<<<< HEAD
-import { SettingsContext } from '../context/index';
-import { Pagination, CloseButton} from "@mantine/core";
-
-const List=(props) => {
-
-    // const { itemsOnPage, seeCompletedItems } = useContext(SettingsContext);
-
-    const defUser = useContext(SettingsContext);
-
-    console.log(defUser);
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsOnPage = defUser.itemsOnPage
-
-    // let listToDisplay = seeCompletedItems ? defUser.list : defUser.list.filter((item)=> !item.complete)
-
-    // const [itemsOnPage, setItemsPerPage] = useState(3);
-    // const itemsOnPage = 2;
-=======
-import { SettingsContext } from "../Context/Settings/Index";
+import { SettingsContext } from "../context/Settings/Index";
 import{Card, Text, Badge, Button, Group} from "@mantine/core";
 import { Pagination}from "@mantine/core";
 
@@ -31,7 +11,7 @@ const List=(props)=> {
     const todo = settings.list;
     const itemsPerPage = settings.itemsPrPage;
     console.log(settings);
->>>>>>> context-methods3
+
 
     const pageCount = Math.ceil(todo.length / itemsPerPage);
     const displayed=todo.slice( (page-1)* itemsPerPage,
@@ -45,31 +25,7 @@ const List=(props)=> {
 
     return (
         <>
-<<<<<<< HEAD
-            <div className="list">
-                {displayed.map((item)=> {
-                    return(
-                        <div className="listItem" key={item.id}>
-                        <CloseButton 
-                        className="deleteButton"
-                        onClick={()=> props.toggleComplete(item.id)}
-                        title="Close"
-                        />
-                        <p>{item.text}</p>
-                        <p>
-                            <small>Assigned to: {item.assignee}</small>
-                        </p>
-                        <p>
-                            <small>Difficulty: {item.difficulty}</small>
-                        </p>
-                        <p>
-                            <div>Complete: {item.complete.toString()}</div>
-                        </p>
-                    </div>
-                );
-            })}
-            </div>
-=======
+
         {displayed.map(
           (item) =>
             item.complete === false && (
@@ -96,7 +52,7 @@ const List=(props)=> {
               </Card>
             )
         )}
->>>>>>> context-methods3
+
             <Pagination
                 current={page}
                 onChange={handlePageChange}

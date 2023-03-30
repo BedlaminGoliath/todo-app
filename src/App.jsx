@@ -1,36 +1,16 @@
-<<<<<<< HEAD
-import React from "react";
 
-import Todo from './Components/Todo';
-import List from './Components/List/index';
-
-import Header from "./Components/Header";
-// import Form from "./Components/settingsForm";
-import "./App.scss";
-import  SettingsContext  from './Components/context/index';
-=======
 import React from 'react';
 import { Grid } from "@mantine/core";
 import List from "./Components/List";
 import Header from "./Components/Header";
 import Todo from "./Components/Todo";
 import "./App.scss";
-import SettingsContext  from './Components/Context/Settings/Index';
->>>>>>> context-methods3
+import SettingsContext  from "./Components/context/Settings/Index";
+
 
 
 const App = () => {
 
-<<<<<<< HEAD
-    return (
-
-          <SettingsContext >
-          <Header />
-            {/* <Form/> */}
-            <Todo/>
-            <List/>
-          </SettingsContext>
-=======
   // const [defaultValues] = useState({
   //   difficulty: 4,
   //   itemsPerPage: 3,
@@ -75,17 +55,17 @@ const App = () => {
 
     return (
         <SettingsContext>
-          {/* <Grid> */}
-            {/* <Grid.Col span={7}> */}
+          <Grid> 
+            <Grid.Col span={7}>
               <Todo />
-            {/* </Grid.Col> */}
-            {/* <Grid.Col span={5}> */}
+            </Grid.Col> */}
+             <Grid.Col span={5}>
               <Header />
               <List />
-            {/* </Grid.Col> */}
-          {/* </Grid> */}
+             </Grid.Col> 
+         </Grid> 
         </SettingsContext >
->>>>>>> context-methods3
+
     );
   };
   export default App;
