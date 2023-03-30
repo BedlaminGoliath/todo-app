@@ -13,10 +13,10 @@ const Header = () => {
       <Select
         placeholder="Pick one"
         data={[
-          { value: 3, label: "3" },
-          { value: 6, label: "6" },
-          { value: 9, label: "9" },
-          { value: 12, label: "12" },
+          { value: 5, label: "5" },
+          { value: 10, label: "10" },
+          { value: 15, label: "15" },
+          { value: 20, label: "20" },
         ]}
         onChange={settings.setItemsPrPage}
       />

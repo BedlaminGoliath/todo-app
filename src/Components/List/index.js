@@ -30,7 +30,7 @@ const List=(props)=> {
               <Card shadow="sm" padding="lg" radius="md" key={item.id} withBorder>
                 <Card.Section>
                   <Group position="apart" mt="md" mb="xs">
-                    <Text weight={500}>{item.text}</Text>
+                    <Text weight={400}>{item.text}</Text>
                     <Badge color="pink" variant="light">
                       Difficulty: {item.difficulty}
                     </Badge>

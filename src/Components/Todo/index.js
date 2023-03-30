@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { TextInput, Button, Group, Box, Slider, Grid, Center} from "@mantine/core";
 import  useForm  from "../../hooks/useForm";
 import {v4 as uuid} from "uuid";
@@ -7,10 +7,13 @@ import { SettingsContext } from "../Context/Settings/Index";
 
 const Todo = (props)=>{
   const settings = useContext(SettingsContext);
+
   const {handleChange, handleSubmit} = useForm(addItem, settings.defaultValues);
 
+  const [defaultValues] = useState({ difficulty:4});
+
   function addItem(item){
-    item.add=uuid();
+    item.id=uuid();
     item.complete=false;
     settings.addItemToList(item)
   }
@@ -24,7 +27,7 @@ const Todo = (props)=>{
     </Center>
 
     <Grid>
-      <Grid.Col span={8}>
+      <Grid.Col span={6}>
         <Box maw={300} mx="auto">
         <form onSubmit={handleSubmit}>
           <h2>Add Item:</h2>
@@ -39,16 +42,18 @@ const Todo = (props)=>{
             <Slider
                 label="Difficulty"
                 placeholder="Difficulty"
-                radius="xl"
+                // radius="xl"
                 min={1}
-                max={5}
-                marks={[
-                  { value: 10, label: "10%" },
-                  { value: 20, label: "20%" },
-                  { value: 30, label: "30%" },
-                  { value: 40, label: "40%" },
-                  { value: 50, label: "50%" },
-                ]}
+                max={6}
+                mb='lg'
+                step={1}
+                // marks={[
+                //   { value: 10, label: "10%" },
+                //   { value: 20, label: "20%" },
+                //   { value: 30, label: "30%" },
+                //   { value: 40, label: "40%" },
+                //   { value: 50, label: "50%" },
+                // ]}
                 defaultValue={settings.defaultValues.difficulty}
                 onChange={handleChange}
               />
@@ -58,6 +63,25 @@ const Todo = (props)=>{
         </form>
         </Box>
       </Grid.Col>
+      <Slider
+                name="difficulty"
+                placeholder="Difficulty"
+                // radius="xl"
+                min={1}
+                max={5}
+                mb='lg'
+                step={1}
+                // marks={[
+                //   { value: 10, label: "10%" },
+                //   { value: 20, label: "20%" },
+                //   { value: 30, label: "30%" },
+                //   { value: 40, label: "40%" },
+                //   { value: 50, label: "50%" },
+                // ]}
+                
+                defaultValue={defaultValues.difficulty}
+                onChange={handleChange}
+              />
     </Grid>
     </>
   );
